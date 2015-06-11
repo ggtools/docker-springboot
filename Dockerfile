@@ -1,4 +1,4 @@
-FROM ggtools/java8
+FROM java:8
 
 MAINTAINER Christophe Labouisse <consulting@labouisse.com>
 
@@ -17,6 +17,8 @@ WORKDIR $HOME
 EXPOSE 8080
 
 ADD docker-entry-point.sh /usr/local/bin/docker-entry-point.sh
+
+RUN groupadd default && useradd -g default default
 
 ONBUILD ADD spring-boot-app $HOME
 
